@@ -40,7 +40,7 @@ func ValidarToken(r *http.Request) error {
 }
 
 // ExtrairUsuarioID retorna o usuarioId que está salvo no token
-func ExtrarirUsuarioID(r *http.Request) (uint64, error) {
+func ExtrairUsuarioID(r *http.Request) (uint64, error) {
 	tokenString := extrairToken(r)
 	token, erro := jwt.Parse(tokenString, retornarChaveDeVerificacao)
 	if erro != nil {

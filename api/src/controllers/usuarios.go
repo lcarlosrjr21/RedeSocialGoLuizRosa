@@ -118,7 +118,7 @@ func AtualizarUsuario(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	usuarioIDNoToken, erro := autenticacao.ExtrarirUsuarioID(r)
+	usuarioIDNoToken, erro := autenticacao.ExtrairUsuarioID(r)
 	if erro != nil {
 		respostas.Erro(w, http.StatusUnauthorized, erro)
 		return
@@ -177,7 +177,7 @@ func DeletarUsuario(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	usuarioIDNoToken, erro := autenticacao.ExtrarirUsuarioID(r)
+	usuarioIDNoToken, erro := autenticacao.ExtrairUsuarioID(r)
 	if erro != nil {
 		respostas.Erro(w, http.StatusUnauthorized, erro)
 		return
@@ -207,7 +207,7 @@ func DeletarUsuario(w http.ResponseWriter, r *http.Request) {
 
 // Seguir usuario - permite um usuario seguir outro
 func SeguirUsuario(w http.ResponseWriter, r *http.Request) {
-	seguidorID, erro := autenticacao.ExtrarirUsuarioID(r)
+	seguidorID, erro := autenticacao.ExtrairUsuarioID(r)
 	if erro != nil {
 		respostas.Erro(w, http.StatusUnauthorized, erro)
 		return
@@ -245,7 +245,7 @@ func SeguirUsuario(w http.ResponseWriter, r *http.Request) {
 
 // PararDeSeguir usuario - permite um usuario seguir outro
 func PararDeSeguirUsuario(w http.ResponseWriter, r *http.Request) {
-	seguidorID, erro := autenticacao.ExtrarirUsuarioID(r)
+	seguidorID, erro := autenticacao.ExtrairUsuarioID(r)
 	if erro != nil {
 		respostas.Erro(w, http.StatusUnauthorized, erro)
 		return
@@ -337,7 +337,7 @@ func BuscarSeguindo(w http.ResponseWriter, r *http.Request) {
 
 // AtualizarSenha permite alterar a senha de um usuario
 func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
-	usuarioIDNoToken, erro := autenticacao.ExtrarirUsuarioID(r)
+	usuarioIDNoToken, erro := autenticacao.ExtrairUsuarioID(r)
 	if erro != nil {
 		respostas.Erro(w, http.StatusUnauthorized, erro)
 		return
