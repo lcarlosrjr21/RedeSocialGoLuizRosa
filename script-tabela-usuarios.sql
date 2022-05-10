@@ -15,7 +15,7 @@ GRANT ALL PRIVILEGES ON bdgo.* TO 'golang'@'localhost';
 ---------------------------------------------------------
 CREATE DATABASE IF NOT EXISTS dbgors;
 USE dbgors;
-
+DROP TABLE IF EXISTS publicacoes;
 DROP TABLE IF EXISTS seguidores;
 DROP TABLE IF EXISTS usuarios;
 
@@ -56,9 +56,27 @@ VALUES
 (1,2),
 (3,1),
 (1,3);
+
+CREATE TABLE publicacoes(
+    id INT auto_increment PRIMARY KEY,
+    titulo VARCHAR(50) NOT NULL,
+    conteudo VARCHAR(300) NOT NULL,
+
+    autor_id int not null,
+    FOREIGN KEY (autor_id)
+    REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+
+    curtidas INT default 0,
+    criadaEm TIMESTAMP default CURRENT_TIMESTAMP
+    
+)ENGINE=INNODB;
+
 */
 desc usuarios;
 desc seguidores;
+desc publicacoes;
 select * from usuarios;
 select * from seguidores;
+select * from publicacoes;
 -- delete from seguidores where usuario_id in (1,2,3);

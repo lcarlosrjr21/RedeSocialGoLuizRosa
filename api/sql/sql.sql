@@ -24,6 +24,21 @@ CREATE TABLE seguidores(
     ON DELETE CASCADE,
     
     primary key(usuario_id, seguidor_id)
-)ENGINE=INNODB; 
+)ENGINE=INNODB;
+
+CREATE TABLE publicacoes(
+    id INT auto_increment PRIMARY KEY,
+    titulo VARCHAR(50) NOT NULL,
+    conteudo VARCHAR(300) NOT NULL,
+
+    autor_id int not null,
+    FOREIGN KEY (autor_id)
+    REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+
+    curtidas INT default 0,
+    criadaEm timestamp default current_timestamp
+    
+)ENGINE=INNODB;
 
 */
