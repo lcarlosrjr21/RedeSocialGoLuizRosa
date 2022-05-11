@@ -68,15 +68,25 @@ CREATE TABLE publicacoes(
     ON DELETE CASCADE,
 
     curtidas INT default 0,
-    criadaEm TIMESTAMP default CURRENT_TIMESTAMP
+    criadaEm timestamp default current_timestamp
     
 )ENGINE=INNODB;
 
 */
+
+USE dbgors;
+
 desc usuarios;
 desc seguidores;
 desc publicacoes;
 select * from usuarios;
 select * from seguidores;
 select * from publicacoes;
+-- delete from publicacoes where id = 4
 -- delete from seguidores where usuario_id in (1,2,3);
+
+insert into publicacoes(titulo, conteudo, autor_id) values
+("Publicacao do usuario 1", "Texto da publicacao do usuario1", 1),
+("Publicacao do usuario 2", "Texto da publicacao do usuario2", 2),
+("Publicacao do usuario 3", "Texto da publicacao do usuario3", 3);
+

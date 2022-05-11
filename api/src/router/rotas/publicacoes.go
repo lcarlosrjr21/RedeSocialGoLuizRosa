@@ -36,4 +36,22 @@ var rotasPublicacoes = []Rota{
 		Funcao:             controllers.DeletarPublicacao,
 		RequerAutenticacao: true,
 	},
+	{
+		URI:                "/usuarios/{usuarioId}/publicacoes", // /usuarios/1/publicacoes - todas publicacoes do usuario 1
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.BuscarPublicacoesPorUsuario,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/publicacoes/{publicacaoId}/curtir",
+		Metodo:             http.MethodPost,
+		Funcao:             controllers.CurtirPublicacao,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/publicacoes/{publicacaoId}/descurtir",
+		Metodo:             http.MethodPost,
+		Funcao:             controllers.DescurtirPublicacao,
+		RequerAutenticacao: true,
+	},
 }
