@@ -18,5 +18,10 @@ function criarUsuario(evento){
             nick: $('#nick').val(),
             senha: $('#senha').val()
         }
+    }).done(function(){ // statuscode 201 200 204 ... ok deu certo
+        alert("Usuário cadastrado com sucesso")
+    }).fail(function(erro){ // statuscode 400 404 401 403 500... falhou
+        console.log(erro)
+        alert("Falha ao cadastrar o usuário")
     });
 }
