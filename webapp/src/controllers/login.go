@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"net/http"
+	"webapp/src/cookies"
 	"webapp/src/modelos"
 	"webapp/src/respostas"
 )
@@ -22,6 +23,7 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// url := fmt.Sprintf("%s/login", config.APIURL)
 	response, erro := http.Post("http://localhost:5000/login", "application/json", bytes.NewBuffer(usuario))
 	if erro != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
@@ -40,10 +42,10 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if erro = cookies.Salvar(w, dadosAutenticacao.ID, dadosAutenticacao.Token); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
 	respostas.JSON(w, http.StatusOK, nil)
-
-	// token, _ := ioutil.ReadAll(response.Body)
-	// fmt.Println(response.StatusCode, response.Body)
-	// fmt.Println(response.StatusCode, string(token))
-
 }
