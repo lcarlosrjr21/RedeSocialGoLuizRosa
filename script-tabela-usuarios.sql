@@ -82,7 +82,7 @@ desc publicacoes;
 select * from usuarios;
 select * from seguidores;
 select * from publicacoes;
--- delete from usuarios where id in (8);
+-- delete from usuarios where id in (11,12);
 -- delete from publicacoes where id = 4
 -- delete from seguidores where usuario_id in (1,2,3);
 

@@ -42,9 +42,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	if erro = seguranca.VerificarSenha(usuarioSalvoNoBanco.Senha, usuario.Senha); erro != nil {
 		respostas.Erro(w, http.StatusUnauthorized, erro)
-	} else {
-		w.Write([]byte("Login com sucesso!\n"))
+		return
 	}
+	// else {
+	// 	w.Write([]byte("Login com sucesso!\n"))
+	// }
 
 	token, erro := autenticacao.CriarToken(usuarioSalvoNoBanco.ID)
 	if erro != nil {
@@ -53,8 +55,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// w.Write([]byte(token))
-
 	usuarioID := strconv.FormatUint(usuarioSalvoNoBanco.ID, 10)
 	respostas.JSON(w, http.StatusOK, modelos.DadosAutenticacao{ID: usuarioID, Token: token})
-
 }
