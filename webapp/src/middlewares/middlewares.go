@@ -1,7 +1,6 @@
 package middlewares
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"webapp/src/cookies"
@@ -18,8 +17,11 @@ func Logger(proximaFuncao http.HandlerFunc) http.HandlerFunc {
 // Autenticar verifica a existencia de cookies
 func Autenticar(proximaFuncao http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		valores, erro := cookies.Ler(r)
-		fmt.Println(valores, erro)
+		if _, erro := cookies.Ler(r); erro != nil {
+			http.Redirect(w, r, "/login", 302)
+			return
+		}
+		// fmt.Println(valores, erro)
 		proximaFuncao(w, r)
 	}
 }
