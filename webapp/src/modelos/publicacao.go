@@ -2,7 +2,7 @@ package modelos
 
 import "time"
 
-// Publicacao representa publicacoes feitas pelos usuarios
+// Publicacao representa publicacoes de todos usuarios
 type Publicacao struct {
 	ID        uint64    `json:"id,omitempty"`
 	Titulo    string    `json:"titulo,omitempty"`
