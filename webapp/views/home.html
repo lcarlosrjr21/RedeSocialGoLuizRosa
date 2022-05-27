@@ -23,16 +23,18 @@
         <hr/>
     {{ end }} -->
 
-    <nav class="navbar bg-light">
+    <!-- <nav class="navbar bg-light">
         <div class="container-fluid">
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
             <button class="btn btn-outline-primary" type="submit">Pesquisar</button>
           </form>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- <nav class="navbar navbar-expand-lg bg-light"></nav> -->
+
+    {{ template "cabecalho"}}
 
     <div class="container-fluid">
         <div class="row mt-4">
@@ -69,11 +71,20 @@
                   {{ end }}
             </div>
         </div>
-    </div>
-    <footer class="text-muted mt-4"></footer>
-    <div class="container">
-        <p>© LuizRosa 2022 - Todos direitos reservados</p>
-    </div>
+
+        {{ template "rodape" }}
+    <!-- </div>
+    <footer class="text-muted mt-4"> --- tá no arquivo rodape.html na pasta templetes
+        <div class="container">
+            <p>© LuizRosa 2022 - Todos direitos reservados</p>
+        </div>
+    </footer> -->
     
+    {{ template "scripts" }}
+    <!-- <script src="/assets/js/jquery.min.js"></script> --- tá no arquivo scripts.html na pasta templetes
+    <script src="/assets/js/bootstrap.js"></script> -->
+
+    <script src="/assets/js/publicacoes.js"></script>
+
 </body>
 </html>
