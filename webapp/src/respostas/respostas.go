@@ -6,12 +6,12 @@ import (
 	"net/http"
 )
 
-// Erro representa a resposta de erro da API
+// ErroAPI representa a resposta de erro da API
 type ErroAPI struct {
 	Erro string `json:"erro"`
 }
 
-// JSON retorna uma resposta em formato JSON para a requisicao
+// JSON retorna uma resposta em formato JSON para a requisição
 func JSON(w http.ResponseWriter, statusCode int, dados interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
@@ -23,7 +23,7 @@ func JSON(w http.ResponseWriter, statusCode int, dados interface{}) {
 	}
 }
 
-// func TratarStatusCodeDeErro trata as requisiçoes com statuscode >= 400
+// TratarStatusCodeDeErro trata as requisições com status code 400 ou superior
 func TratarStatusCodeDeErro(w http.ResponseWriter, r *http.Response) {
 	var erro ErroAPI
 	json.NewDecoder(r.Body).Decode(&erro)

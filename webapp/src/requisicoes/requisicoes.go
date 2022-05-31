@@ -7,7 +7,7 @@ import (
 )
 
 // FazerRequisicaoComAutencicacao é utilizada para colocar o token na requisicao
-func FazerRequisicaoComAutencicacao(r *http.Request, metodo, url string, dados io.Reader) (*http.Response, error) {
+func FazerRequisicaoComAutenticacao(r *http.Request, metodo, url string, dados io.Reader) (*http.Response, error) {
 	request, erro := http.NewRequest(metodo, url, dados) // cria a requisicao porem ainda não chama - ainda falta o cookie
 	if erro != nil {
 		return nil, erro
