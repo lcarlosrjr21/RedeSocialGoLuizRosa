@@ -64,7 +64,7 @@ func PararDeSeguirUsuario(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	url := fmt.Sprintf("%s/usuarios/%d/parar-de-seguir", config.APIURL, usuarioID)
+	url := fmt.Sprintf("%s/usuarios/%d/pararseguir", config.APIURL, usuarioID)
 	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodPost, url, nil)
 	if erro != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
@@ -153,7 +153,7 @@ func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
 	cookie, _ := cookies.Ler(r)
 	usuarioID, _ := strconv.ParseUint(cookie["id"], 10, 64)
 
-	url := fmt.Sprintf("%s/usuarios/%d/atualizar-senha", config.APIURL, usuarioID)
+	url := fmt.Sprintf("%s/usuarios/%d/atualizarsenha", config.APIURL, usuarioID)
 	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodPost, url, bytes.NewBuffer(senhas))
 	if erro != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})

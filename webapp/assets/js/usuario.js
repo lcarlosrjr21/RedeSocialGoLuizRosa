@@ -14,7 +14,7 @@ function pararDeSeguir() {
     }).done(function() {
         window.location = `/usuarios/${usuarioId}`;
     }).fail(function() {
-        Swal.fire("Eita...", "Erro ao parar de seguir o usuário!", "error");
+        Swal.fire("Atenção !!!", "Erro ao parar de seguir o usuário!", "error");
         $('#parar-de-seguir').prop('disabled', false);
     });
 }
@@ -29,7 +29,7 @@ function seguir() {
     }).done(function() {
         window.location = `/usuarios/${usuarioId}`;
     }).fail(function() {
-        Swal.fire("Eita...", "Erro ao seguir o usuário!", "error");
+        Swal.fire("Atenção !!!", "Erro ao seguir o usuário!", "error");
         $('#seguir').prop('disabled', false);
     });
 }
@@ -59,7 +59,7 @@ function atualizarSenha(evento) {
     evento.preventDefault();
 
     if ($('#nova-senha').val() != $('#confirmar-senha').val()) {
-        Swal.fire("Eita...", "As senhas não coincidem!", "warning");
+        Swal.fire("Atenção !!!", "As senhas não coincidem!", "warning");
         return;
     }
 
@@ -76,7 +76,7 @@ function atualizarSenha(evento) {
                 window.location = "/perfil";
             })
     }).fail(function() {
-        Swal.fire("Eita...", "Erro ao atualizar a senha!", "error");
+        Swal.fire("Atenção !!!", "Erro ao atualizar a senha!", "error");
     });
 }
 

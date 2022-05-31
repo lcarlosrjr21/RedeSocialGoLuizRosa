@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Perfil do Usuário</h5>
                         <h6 class="card-subtitle mb-2 text-muted">
-                            {{ .Usuario.Nome }} - {{ .Usuario.Nick }} - Membro Desde:
+                          Nome do Usuario:  {{ .Usuario.Nome }} - Nick: {{ .Usuario.Nick }} - Membro Desde:
                             {{ .Usuario.CriadoEm.Format "02/01/2006" }}
                         </h6>
 
@@ -42,13 +42,13 @@
 
                         <a href="#" class="card-link">
                             {{ if $SeguidoPeloUsuarioLogado }}
-                            <button id="parar-de-seguir" class="btn btn-info" data-usuario-id="{{ .Usuario.ID }}">
+                            <button id="parar-de-seguir" class="btn btn-primary" data-usuario-id="{{ .Usuario.ID }}">
                                 Parar de Seguir
                             </button>
 
                             {{ else }}
 
-                            <button id="seguir" class="btn btn-info" data-usuario-id="{{ .Usuario.ID }}">
+                            <button id="seguir" class="btn btn-primary" data-usuario-id="{{ .Usuario.ID }}">
                                 Seguir
                             </button>
 
@@ -64,13 +64,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"> Publicações do Usuário {{ .Usuario.Nick }}</h5>
+                        <h5 class="card-title"> Publicações do Usuário: {{ .Usuario.Nome }}</h5>
                         <p class="card-text">
                             {{ range .Usuario.Publicacoes }}
                             {{ template "publicacao-sem-permissao" . }}
                             {{ else }}
                         <p class="text-muted text-center">
-                            Nenhuma publicação por enquanto...
+                            Nenhuma publicação localizada para esse usuário !!!
                         </p>
                         {{ end }}
                         </p>

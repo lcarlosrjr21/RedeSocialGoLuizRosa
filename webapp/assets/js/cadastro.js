@@ -1,11 +1,10 @@
-$('#formulario-cadastro').on('submit', criarUsuario)
+$('#formulario-cadastro').on('submit', criarUsuario);
 
-function criarUsuario(evento){
+function criarUsuario(evento) {
     evento.preventDefault(); // prevenir o comportamento default do form - não recarrega a interface 
-    // console.log("to no criar usuario")
 
-    if ( $('#senha').val() != $('#confirmar-senha').val() ) {
-        alert("As senhas não correpondem");
+    if ($('#senha').val() != $('#confirmar-senha').val()) {
+        Swal.fire("Atenção !!!", "As senhas não coincidem!", "error");
         return;
     }
 
@@ -13,15 +12,28 @@ function criarUsuario(evento){
         url: "/usuarios",
         method: "POST",
         data: {
-            nome: $('#nome').val(),
-            email: $('#email').val(),
-            nick: $('#nick').val(),
-            senha: $('#senha').val()
+           nome: $('#nome').val(), 
+           email: $('#email').val(),
+           nick: $('#nick').val(),
+           senha: $('#senha').val()
         }
-    }).done(function(){ // statuscode 201 200 204 ... ok deu certo
-        alert("Usuário cadastrado com sucesso")
-    }).fail(function(erro){ // statuscode 400 404 401 403 500... falhou
-        console.log(erro)
-        alert("Falha ao cadastrar o usuário")
+    }).done(function() {
+        Swal.fire("Sucesso!", "Usuário cadastrado com sucesso!", "success")
+            .then(function() {
+                $.ajax({
+                    url: "/login",
+                    method: "POST",
+                    data: {
+                        email: $('#email').val(),
+                        senha: $('#senha').val()
+                    }
+                }).done(function() {
+                    window.location = "/home";
+                }).fail(function() {
+                    Swal.fire("Atenção !!!", "Erro ao autenticar o usuário!", "error");
+                })
+            })
+    }).fail(function() {
+        Swal.fire("Atenção !!!", "Erro ao cadastrar o usuário!", "error");
     });
 }

@@ -21,6 +21,7 @@ func Configurar(router *mux.Router) *mux.Router {
 	rotas = append(rotas, rotasUsuarios...) // (...) pra pegar cada item do slice e ir adicionando
 	rotas = append(rotas, rotaPaginaPrincipal)
 	rotas = append(rotas, rotasPublicacoes...)
+	rotas = append(rotas, rotaLogout)
 
 	for _, rota := range rotas {
 

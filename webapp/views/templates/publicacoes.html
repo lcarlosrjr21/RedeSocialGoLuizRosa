@@ -1,16 +1,18 @@
 {{ define "curtidas" }}
-<i class="fas fa-heart curtir-publicacao" style="cursor: pointer;"></i>
+<a href="/home" data-toggle="tooltip" data-placement="bottom" title="Curtir/Descurtir" style="text-decoration: none;">
+<i class="fas fa-heart curtir-publicacao"></i>
 <span> {{ .Curtidas }} </span>
+</a>
 {{ end }}
 
 {{ define "editar" }}
-<a href="/publicacoes/{{ .ID }}/atualizar" style="text-decoration: none;">
+<a href="/publicacoes/{{ .ID }}/atualizar" data-toggle="tooltip" data-placement="bottom" title="Editar Publicação" style="text-decoration: none;">
     <i class="fas fa-edit"></i>
 </a>
 {{ end }}
 
 {{ define "deletar" }}
-    <i class="fas fa-trash text-danger deletar-publicacao" style="cursor: pointer;"></i>
+    <i class="fas fa-trash text-danger deletar-publicacao" data-toggle="tooltip" data-placement="bottom" title="Apagar Publicação" style="cursor: pointer;"></i>
 {{ end }}
 
 {{ define "cabecalho-publicacao" }}
