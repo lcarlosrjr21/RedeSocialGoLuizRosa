@@ -41,7 +41,8 @@ func BuscarUsuarioCompleto(usuarioID uint64, r *http.Request) (Usuario, error) {
 		publicacoes []Publicacao
 	)
 
-	for i := 0; i < 4; i++ {
+	// percorrendo os canais para identificar qual entrega valor primeiro - select para concorrencia
+	for i := 0; i < 4; i++ { // 4 goroutines rodando ao mesmo tempo
 		select {
 		case usuarioCarregado := <-canalUsuario:
 			if usuarioCarregado.ID == 0 {
@@ -73,6 +74,7 @@ func BuscarUsuarioCompleto(usuarioID uint64, r *http.Request) (Usuario, error) {
 		}
 	}
 
+	// concatenando os valores dos canais seguidores, seguindo e publicacoes ao usuario
 	usuario.Seguidores = seguidores
 	usuario.Seguindo = seguindo
 	usuario.Publicacoes = publicacoes
