@@ -82,9 +82,10 @@ desc publicacoes;
 select * from usuarios;
 select * from seguidores;
 select * from publicacoes;
--- delete from usuarios where id in (11,12);
--- delete from publicacoes where id = 4
--- delete from seguidores where usuario_id in (1,2,3);
+update publicacoes set curtidas = 0  where id = 1
+-- delete from usuarios where id in (36);
+-- delete from publicacoes where id in (1,2,4,5,12,14,15)
+-- delete from seguidores where usuario_id in (15,13,16,29,15,13,31,16,29);
 
 insert into publicacoes(titulo, conteudo, autor_id) values
 ("Publicacao do usuario 1", "Texto da publicacao do usuario1", 1),

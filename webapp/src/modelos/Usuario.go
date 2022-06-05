@@ -118,7 +118,7 @@ func BuscarSeguidores(canal chan<- []Usuario, usuarioID uint64, r *http.Request)
 	}
 
 	if seguidores == nil {
-		canal <- make([]Usuario, 0)
+		canal <- make([]Usuario, 0) // slice vazio que informa que o usuario nao tem seguidores
 		return
 	}
 
@@ -142,7 +142,7 @@ func BuscarSeguindo(canal chan<- []Usuario, usuarioID uint64, r *http.Request) {
 	}
 
 	if seguindo == nil {
-		canal <- make([]Usuario, 0)
+		canal <- make([]Usuario, 0) // informa que nao esta seguindo ninguem
 		return
 	}
 
@@ -166,7 +166,7 @@ func BuscarPublicacoes(canal chan<- []Publicacao, usuarioID uint64, r *http.Requ
 	}
 
 	if publicacoes == nil {
-		canal <- make([]Publicacao, 0)
+		canal <- make([]Publicacao, 0) // slice que representa que nao tem publicacao
 		return
 	}
 
